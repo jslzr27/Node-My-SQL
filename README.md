@@ -3,13 +3,14 @@ This is an app created in using node and MySQL. It is called bamazon.js and simi
 
 This app uses the package npm mysql to connect to a MySQL database and the package npm inquirer to prompt the users with questions.
 
-The app first displays a table of all the available products in stock:
+* The app first displays a table of all the available products in stock
+![](tablebamazon.png)
+* Then it asks users to select a product by id, and how much they would like to get.
 
-Then it asks users to select a product by id, and how much they would like to get.
-
-Then it gives confirmation to the user about the order. If the inventory is not enough it will warn the user that their order can't be placed.
-
-However if the order is succesful it will confirm the order and will give the total to the user.
+* Then it gives confirmation to the user about the order. If the inventory is not enough it will warn the user that their order can't be placed.
+![](tablenot.png)
+* However if the order is succesful it will confirm the order and will give the total to the user.
+![](tableprice.png)
 
 ## Technologies used:
 

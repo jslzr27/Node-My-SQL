@@ -19,14 +19,15 @@ connection.connect(function(err){
 
 function start() {
 
+var linebreaks = "\n\n\n\n\n\n\n\n\n\n";
 connection.query("SELECT * FROM products", function(err, res) {
     if(err) throw err;
     console.log("Welcome to the site. Please select an Item from the list below:\n");
-    console.log (chalk.yellow("Item id \tProduct \tDepartment \tPrice\t Stock"));
+    console.log (chalk.yellow("Item id || Product || Department || Price || Stock"));
     var divider = (chalk.magenta("--------------------------------------------------------------------------------------------------------------------"));
     console.log(divider);
     for(var i = 0; i < res.length; i++){
-        console.log(chalk.green(res[i].item_id + " \t" + res[i].product_name + " \t" + res[i].department_name + " \t" + res[i].price + " \t" + res[i].stock_quantity));
+        console.log(chalk.green(res[i].item_id + " || " + res[i].product_name + " || " + res[i].department_name + " || " + res[i].price + " || " + res[i].stock_quantity));
     }
     console.log(divider);
 
@@ -56,7 +57,7 @@ connection.query("SELECT * FROM products", function(err, res) {
                 if(res[0].stock_quantity > productSelect.quantity) {
                     var totalCost = res[0].price * productSelect.quantity;
                     console.log(divider);
-                    console.log("Your order has been placed\nYour total is $" + (chalk.green(totalCost.toFixed(2))) + " \nThank you for your order");
+                    console.log("Your order has been placed\nYour total is $" + (chalk.green(totalCost.toFixed(2))) + " \nThank you for your order" + linebreaks);
 
                     var updatedQuantity = res[0].stock_quantity - productSelect.quantity;
                     connection.query("UPDATE products SET ? WHERE ?", [{
@@ -70,7 +71,7 @@ connection.query("SELECT * FROM products", function(err, res) {
                     start();
                 } else{
                     console.log(divider);
-                    console.log("Sorry, we do not have enough in stock.\nPlease try your order again\n");
+                    console.log("Sorry, we do not have enough in stock.\nPlease try your order again" + linebreaks);
                     console.log(divider);
                     start();
                 }
