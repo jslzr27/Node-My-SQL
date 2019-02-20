@@ -1,6 +1,7 @@
 var mySql = require("my-sql");
 var inquirer = require("inquirer");
 var chalk = require("chalk");
+var Table = require("cli-table3");
 
 //Establish the connection to the database
 var connection = mySql.createConnection({
@@ -22,13 +23,18 @@ function start() {
 var linebreaks = "\n\n\n\n\n\n\n\n\n\n";
 connection.query("SELECT * FROM products", function(err, res) {
     if(err) throw err;
+    var table = new Table ({
+        head: ['Item ID', 'Product Name', 'Department', 'Price', 'Stock Quantity']
+    });
+    // console.log (chalk.yellow("Item id || Product || Department || Price || Stock"));
     console.log("Welcome to the site. Please select an Item from the list below:\n");
-    console.log (chalk.yellow("Item id || Product || Department || Price || Stock"));
     var divider = (chalk.magenta("--------------------------------------------------------------------------------------------------------------------"));
     console.log(divider);
     for(var i = 0; i < res.length; i++){
-        console.log(chalk.green(res[i].item_id + " || " + res[i].product_name + " || " + res[i].department_name + " || " + res[i].price + " || " + res[i].stock_quantity));
+        // console.log(chalk.green(res[i].item_id + " || " + res[i].product_name + " || " + res[i].department_name + " || " + res[i].price + " || " + res[i].stock_quantity));
+        table.push([res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity])
     }
+    console.log(table.toString());
     console.log(divider);
 
     inquirer
@@ -39,7 +45,7 @@ connection.query("SELECT * FROM products", function(err, res) {
         validate: function(value){
             if(isNaN(value) === false) {
                 return true
-            } return false
+            } console.log(" Sorry that's not a valid number"); return false;
         }
     },{
         name: "quantity",
@@ -48,7 +54,7 @@ connection.query("SELECT * FROM products", function(err, res) {
         validate: function(value){
             if(isNaN(value) === false) {
                 return true
-            } return false
+            } console.log(" Sorry that's not a valid number"); return false;
         }
     }])
        .then(function (productSelect){

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jslzr27/Node-My-SQL#readme",
   "dependencies": {
     "chalk": "^2.4.2",
+    "cli-table3": "^0.5.1",
     "inquirer": "^6.2.2",
     "my-sql": "^1.2.15",
     "prompt": "^1.0.0"

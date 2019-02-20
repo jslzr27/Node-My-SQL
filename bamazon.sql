@@ -36,3 +36,55 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("NOW Vitamin D-3 ", "Health & Household", 8.59, 149);
 
 SELECT * FROM products;
+
+
+USE bamazon_db;
+
+CREATE TABLE departments (
+	item_id INTEGER NOT NULL AUTO_INCREMENT,
+    department_name VARCHAR(50) NOT NULL,
+	PRIMARY KEY(item_id)
+);
+
+INSERT INTO departments (department_name)
+VALUES ("Movies");
+INSERT INTO departments (department_name)
+VALUES ("Music");
+INSERT INTO departments (department_name)
+VALUES ("Video Games");
+INSERT INTO departments (department_name)
+VALUES ("Toys & Games");
+INSERT INTO departments (department_name)
+VALUES ("Beauty & Personal Care");
+INSERT INTO departments (department_name)
+VALUES ("Health, Household & Baby Care");
+INSERT INTO departments (department_name)
+VALUES ("Automotive Parts & Accessories");
+INSERT INTO departments (department_name)
+VALUES ("Garden & Outdoor");
+INSERT INTO departments (department_name)
+VALUES ("Tools & Home Improvement");
+INSERT INTO departments (department_name)
+VALUES ("Arts, Crafts & Sewing");
+INSERT INTO departments (department_name)
+VALUES ("Home & Kitchen");
+INSERT INTO departments (department_name)
+VALUES ("Office Products");
+INSERT INTO departments (department_name)
+VALUES ("Grocery & Gourmet Food");
+INSERT INTO departments (department_name)
+VALUES ("Sports & Outdoors");
+INSERT INTO departments (department_name)
+VALUES ("Books");
+INSERT INTO departments (department_name)
+VALUES ("Cell Phones & Accessories");
+INSERT INTO departments (department_name)
+VALUES ("Clothing, Shoes & Jewelry");
+INSERT INTO departments (department_name)
+VALUES ("Electronics");
+INSERT INTO departments (department_name)
+VALUES ("Musical Instruments");
+INSERT INTO departments (department_name)
+VALUES ("Everything Else"); 
+
+SELECT * FROM departments;
